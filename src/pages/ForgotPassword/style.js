@@ -13,10 +13,12 @@ export const DivInputColumn = styled.div`
   align-items: center;
   margin: 10%;
   padding: 8px;
-  padding-top:10%;
 `;
 
 export const Text = styled.span`
   font-size: 36px;
-  padding: 10px;
+  padding: 50px;
+  color: #162d18;
+  font-weight: bold;
+  font-family: 'Sen', sans-serif;
 `;

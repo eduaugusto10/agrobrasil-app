@@ -12,7 +12,9 @@ export function SendPassword() {
       </div>
       <DivInputColumn>
         <Text>Pronto!</Text>
-        <span>Um link para recuperar sua senha foi enviado para seu e-mail</span>
+        <span style={{ color: "#162D18", margin: "50px" }}>
+          Um link para recuperar sua senha foi enviado para seu e-mail
+        </span>
         <GreenButton name="OK" />
       </DivInputColumn>
     </Container>

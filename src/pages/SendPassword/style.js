@@ -19,4 +19,6 @@ export const DivInputColumn = styled.div`
 export const Text = styled.span`
   font-size: 36px;
   padding: 10px;
+  color: #162d18;
+  font-weight: bold;
 `;

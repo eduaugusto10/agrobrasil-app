@@ -12,10 +12,12 @@ export const DivInputColumn = styled.div`
   background-color: #fff;
   align-items: center;
   margin: 10%;
-  padding-top: 5%;
+
 `;
 
 export const Text = styled.span`
   font-size: 36px;
-  padding: 10px;
+  padding: 40px;
+  color: #162d18;
+  font-weight: bold;
 `;

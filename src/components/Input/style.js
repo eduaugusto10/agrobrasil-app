@@ -26,4 +26,6 @@ export const Inputs = styled.input`
 export const Text = styled.span`
   margin-bottom: 5px;
   font-size: 18px;
+  color: #162d18;
+  font-family: 'Sen', sans-serif;
 `;
