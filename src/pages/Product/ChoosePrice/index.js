@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../../components/Header";
 import ProductContext from "../ProductContext";
 import { BallGreen, BallWhite } from "../style";
@@ -12,51 +12,39 @@ import {
   WhiteButton,
   GreenButton,
 } from "./style";
-export function Photos() {
-  const [step, setStep] = useState("first");
+export function ChoosePrice() {
   const { changeStep } = useContext(ProductContext);
 
   return (
     <>
       <Header />
       <DivColumn>
-        <Text>Coloque fotos do seu produto</Text>
-        <SubTitle>Você pode colocar até 5 fotos do seu produto</SubTitle>
+        <Text>Qual o plano do seu anúncio?</Text>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <Card onClick={() => setStep("second")}>
+          <Card >
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>Anexo I</SubTitle>
+            <SubTitle>30 DIAS</SubTitle>
           </Card>
           <Card>
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>Anexo II</SubTitle>
+            <SubTitle>90 DIAS</SubTitle>
           </Card>
           <Card>
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>Anexo III</SubTitle>
+            <SubTitle>180 DIAS</SubTitle>
           </Card>
           <Card>
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>Anexo IV</SubTitle>
+            <SubTitle>365 DIAS</SubTitle>
           </Card>
-          <Card>
-            <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>Anexo V</SubTitle>
-          </Card>
-        </div>
-        <div style={{ display: "flex", flexDiretion: "row" }}>
-          <WhiteButton onClick={() => changeStep("third")}>VOLTAR</WhiteButton>
-          <GreenButton onClick={() => changeStep("fifth")}>
-            CONTINUAR
-          </GreenButton>
         </div>
         <div
           style={{ display: "flex", flexDirection: "row", marginTop: "60px" }}
         >
           <BallWhite />
           <BallWhite />
-          <BallGreen />
           <BallWhite />
+          <BallGreen />
           <BallWhite />
           <BallWhite />
         </div>
@@ -65,4 +53,4 @@ export function Photos() {
   );
 }
 
-export default Photos;
+export default ChoosePrice;

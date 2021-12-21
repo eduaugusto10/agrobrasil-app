@@ -6,9 +6,9 @@ import {
   Form,
   Input,
   SubTitle,
+  GreenButton,
 } from "./style";
 import { NavLink } from "react-router-dom";
-import GreenButton from "../../components/GreenButton";
 import LeftLogo from "../../components/LeftLogo";
 import api from "../../services/api";
 
@@ -65,24 +65,18 @@ export function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div
+          <NavLink
             style={{
-              display: "flex",
-              width: "58%",
-              marginLeft: "10%",
-              marginBottom: "20px",
-              marginTop: "-20px",
+              width: "100%",
+              color: "#162D1899",
               textAlign: "left",
+              marginBottom: "53px",
             }}
+            to="/forgotpass"
           >
-            <NavLink
-              style={{ color: "#162D1899", textDecoration: "none" }}
-              to="/forgotpass"
-            >
-              <span>Esqueci minha senha</span>
-            </NavLink>
-          </div>
-          <GreenButton name="ENTRAR" />
+            <span>Esqueci minha senha</span>
+          </NavLink>
+          <GreenButton>ENTRAR</GreenButton>
         </Form>
         <NavLink
           style={{

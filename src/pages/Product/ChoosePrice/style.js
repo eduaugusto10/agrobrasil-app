@@ -28,7 +28,7 @@ export const SubTitle = styled.span`
 export const Text = styled.span`
   font-size: 32px;
   margin-top: 54px;
-  margin-bottom: 79px;
+  margin-bottom: 65px;
   color: #162d18;
   font-weight: bold;
   font-family: "Sen", sans-serif;
@@ -50,9 +50,9 @@ export const InsideCard = styled.div`
 export const GreenButton = styled.button`
   width: 211px;
   height: 40px;
+  margin-top: 30px;
   background-color: #162d18;
   font-size: 18px;
-  margin-left: 10px;
   color: #ffffff;
   border-radius: 5px;
   font-family: "Sen", sans-serif;
@@ -60,8 +60,8 @@ export const GreenButton = styled.button`
 export const WhiteButton = styled.button`
   width: 211px;
   height: 40px;
-  margin-right: 10px;
-  background-color: #fff;
+  margin-top: 30px;
+  background-color: #FFF;
   font-size: 18px;
   color: #162d18;
   border-radius: 5px;

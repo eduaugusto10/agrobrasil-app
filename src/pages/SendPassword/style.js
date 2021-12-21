@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30vw 70vw;
   background-color: #e8eae8;
 `;
 
@@ -11,14 +11,35 @@ export const DivInputColumn = styled.div`
   flex-direction: column;
   background-color: #fff;
   align-items: center;
+  width: 817px;
+  height: 500px;
   margin: 10%;
-  padding: 8px;
-  padding-top:10%;
 `;
 
 export const Text = styled.span`
   font-size: 36px;
-  padding: 10px;
+  margin-top: 143px;
   color: #162d18;
   font-weight: bold;
+  font-family: "Sen", sans-serif;
+`;
+
+export const GreenButton = styled.button`
+  width: 211px;
+  height: 40px;
+  background-color: #162d18;
+  font-size: 18px;
+  color: #ffffff;
+  border-radius: 5px;
+  font-family: "Sen", sans-serif;
+`;
+
+export const SubTitle = styled.span`
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #162d18;
+  font-family: "Sen", sans-serif;
+  width: 90%;
+  text-align: center;
+  margin: 60px;
 `;

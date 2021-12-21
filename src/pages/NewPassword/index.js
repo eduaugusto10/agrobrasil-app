@@ -1,7 +1,13 @@
 import React from "react";
-import { Text, Container, DivInputColumn } from "./style";
-import GreenButton from "../../components/GreenButton";
-import Input from "../../components/Input";
+import {
+  Text,
+  Container,
+  DivInputColumn,
+  GreenButton,
+  Input,
+  SubTitle,
+} from "./style";
+
 import LeftLogo from "../../components/LeftLogo";
 
 export function NewPassword() {
@@ -12,10 +18,11 @@ export function NewPassword() {
       </div>
       <DivInputColumn>
         <Text>Redefinir senha</Text>
-
-        <Input title="Nova senha" type="password" />
-        <Input title="Confirmar senha" type="password" />
-        <GreenButton name="CONFIRMAR" />
+        <SubTitle>Nova Senha</SubTitle>
+        <Input type="password" />
+        <SubTitle>Confirmar senha</SubTitle>
+        <Input type="password" />
+        <GreenButton>CONFIRMAR</GreenButton>
       </DivInputColumn>
     </Container>
   );

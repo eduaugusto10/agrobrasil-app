@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: #e8eae8;
   align-items: center;
+  height: 100vh;
 `;
 
 export const DivColumn = styled.div`
@@ -28,7 +29,7 @@ export const SubTitle = styled.span`
 export const Text = styled.span`
   font-size: 32px;
   margin-top: 54px;
-  margin-bottom: 79px;
+  margin-bottom: 85px;
   color: #162d18;
   font-weight: bold;
   font-family: "Sen", sans-serif;
@@ -47,23 +48,26 @@ export const InsideCard = styled.div`
   border: 6px solid #162d18;
 `;
 
-export const GreenButton = styled.button`
-  width: 211px;
-  height: 40px;
-  background-color: #162d18;
-  font-size: 18px;
-  margin-left: 10px;
-  color: #ffffff;
-  border-radius: 5px;
-  font-family: "Sen", sans-serif;
+export const Image = styled.img`
+  margin: 25px;
+  width: 60px;
+  height: 60px;
 `;
-export const WhiteButton = styled.button`
-  width: 211px;
-  height: 40px;
-  margin-right: 10px;
-  background-color: #fff;
-  font-size: 18px;
-  color: #162d18;
-  border-radius: 5px;
-  font-family: "Sen", sans-serif;
+
+export const BallGreen = styled.div`
+  width: 16px;
+  height: 16px;
+  background-color: #162d18;
+  border-radius: 20px;
+  border: 3px solid #162d18;
+  margin: 20px;
+`;
+
+export const BallWhite = styled.div`
+  width: 16px;
+  height: 16px;
+  background-Color: #FFF;
+  border-Radius: 20px;
+  border: 3px solid #162d18;
+  margin: 20px;
 `;

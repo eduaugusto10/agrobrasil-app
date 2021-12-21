@@ -1,7 +1,13 @@
 import React from "react";
-import { Text, Container, DivInputColumn } from "./style";
-import GreenButton from "../../components/GreenButton";
-import Input from "../../components/Input";
+import {
+  Text,
+  Container,
+  DivInputColumn,
+  GreenButton,
+  Input,
+  SubTitle,
+} from "./style";
+
 import LeftLogo from "../../components/LeftLogo";
 
 export function ForgotPassword() {
@@ -11,10 +17,11 @@ export function ForgotPassword() {
         <LeftLogo />
       </div>
       <DivInputColumn>
-        <Text >Recuperar Senha</Text>
-        <Input title="E-mail" />
+        <Text>Recuperar Senha</Text>
+        <SubTitle>E-mail</SubTitle>
+        <Input />
         <div style={{ marginTop: "10px" }}>
-          <GreenButton name="ENVIAR" />
+          <GreenButton>ENVIAR</GreenButton>
         </div>
       </DivInputColumn>
     </Container>

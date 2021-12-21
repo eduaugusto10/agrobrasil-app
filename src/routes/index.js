@@ -7,6 +7,7 @@ import ForgotPassword from '../pages/ForgotPassword'
 import SendPassword from '../pages/SendPassword'
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import  Home  from "../pages/Home";
+import Product from "../pages/Product";
 
 const PrivateRoute = () => {
   const { signed } = useContext(AuthContext);
@@ -22,6 +23,7 @@ const Router = () => (
       <Route path="/login" element={<Login />} />
       <Route exact path="/" element={<Login />} />
       <Route path="/home" element={<Home/>}/>
+      <Route path="/product" element={<Product/>}/>
     </Routes>
   </BrowserRouter>
 );
