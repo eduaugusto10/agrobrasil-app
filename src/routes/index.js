@@ -8,6 +8,8 @@ import SendPassword from '../pages/SendPassword'
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import  Home  from "../pages/Home";
 import Product from "../pages/Product";
+import Description from "../pages/Description";
+import DataClient from "../pages/Product/DataClient";
 
 const PrivateRoute = () => {
   const { signed } = useContext(AuthContext);
@@ -24,6 +26,8 @@ const Router = () => (
       <Route exact path="/" element={<Login />} />
       <Route path="/home" element={<Home/>}/>
       <Route path="/product" element={<Product/>}/>
+      <Route path="/description" element={<Description/>}/>
+      <Route path='/data' element={<DataClient/>}/>
     </Routes>
   </BrowserRouter>
 );

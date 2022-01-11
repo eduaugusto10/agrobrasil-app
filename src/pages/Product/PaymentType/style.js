@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: #e8eae8;
   align-items: center;
-  height: 100%;
 `;
 
 export const DivColumn = styled.div`
@@ -52,7 +51,6 @@ export const GreenButton = styled.button`
   width: 211px;
   height: 40px;
   margin-top: 30px;
-  margin-left: 10px;
   background-color: #162d18;
   font-size: 18px;
   color: #ffffff;
@@ -63,33 +61,9 @@ export const WhiteButton = styled.button`
   width: 211px;
   height: 40px;
   margin-top: 30px;
-  margin-right: 10px;
-  background-color: #fff;
+  background-color: #FFF;
   font-size: 18px;
   color: #162d18;
   border-radius: 5px;
   font-family: "Sen", sans-serif;
-`;
-
-export const Label = styled.label`
-  width: 122px;
-  height: 122px;
-  border: none;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-  }
-`;
-
-export const Image = styled.img`
-  margin: 25px;
-  width: 54px;
-  height: 47px;
 `;

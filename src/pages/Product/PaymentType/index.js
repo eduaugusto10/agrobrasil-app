@@ -12,30 +12,22 @@ import {
   WhiteButton,
   GreenButton,
 } from "./style";
-export function ChoosePrice() {
+export function PaymentType() {
   const { changeStep } = useContext(ProductContext);
 
   return (
     <>
       <Header />
       <DivColumn>
-        <Text>Qual o plano do seu anúncio?</Text>
+        <Text>Qual a forma de pagamento do anúncio?</Text>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <Card onClick={() => changeStep("sixth")}>
+          <Card >
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>30 DIAS</SubTitle>
+            <SubTitle>Cartão de Crédito</SubTitle>
           </Card>
-          <Card onClick={() => changeStep("sixth")}>
+          <Card>
             <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>90 DIAS</SubTitle>
-          </Card>
-          <Card onClick={() => changeStep("sixth")}>
-            <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>180 DIAS</SubTitle>
-          </Card >
-          <Card onClick={() => changeStep("sixth")}>
-            <InsideCard>IMAGEM</InsideCard>
-            <SubTitle>365 DIAS</SubTitle>
+            <SubTitle>Boleto</SubTitle>
           </Card>
         </div>
         <div
@@ -44,8 +36,8 @@ export function ChoosePrice() {
           <BallWhite />
           <BallWhite />
           <BallWhite />
-          <BallGreen />
           <BallWhite />
+          <BallGreen />
           <BallWhite />
         </div>
       </DivColumn>
@@ -53,4 +45,4 @@ export function ChoosePrice() {
   );
 }
 
-export default ChoosePrice;
+export default PaymentType;

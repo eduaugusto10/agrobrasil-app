@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 import {
   Text,
   Container,
@@ -8,22 +9,25 @@ import {
   Input,
   SubTitle,
   GreenButton,
-  Column
+  Column,
 } from "./style";
 
 import LeftLogo from "../../components/LeftLogo";
 
 export function Register() {
+  const history = useNavigate();
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [btnRegister, setBTNRegister] = useState("CADASTRAR");
 
   async function handleSubmit() {
     if (!email || !password) {
       console.log("Insira os dados");
     } else {
+      setBTNRegister("AGUARDE...");
       const data = new FormData();
       data.append("nickname", nickname);
       data.append("email", email);
@@ -32,11 +36,16 @@ export function Register() {
       try {
         api.post("/users", data).then((result) => {
           console.log(result);
+          Redirect();
         });
       } catch (error) {
         console.log("Erro na senha");
       }
     }
+  }
+
+  function Redirect() {
+    history("/login");
   }
 
   return (
@@ -82,7 +91,7 @@ export function Register() {
             />
           </Column>
         </DivInputRow>
-        <GreenButton onClick={() => handleSubmit()}>CADASTRAR</GreenButton>
+        <GreenButton onClick={() => handleSubmit()}>{btnRegister}</GreenButton>
       </DivInputColumn>
     </Container>
   );

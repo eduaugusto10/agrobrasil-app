@@ -5,6 +5,7 @@ import ChoosePrice from "./ChoosePrice";
 import Description from "./Description";
 import Category from "./Category";
 import Photos from "./Photos";
+import PaymentType from "./PaymentType";
 import Hands from "../../assets/hands.svg";
 import Engrenagem from "../../assets/engrenagem.svg";
 import Home from "../../assets/home.svg";
@@ -40,19 +41,19 @@ export function Product() {
                   </InsideCard>
                   <SubTitle>PRODUTOS</SubTitle>
                 </Card>
-                <Card>
+                <Card onClick={() => setStep("second")}>
                   <InsideCard>
                     <Image src={Engrenagem} />
                   </InsideCard>
                   <SubTitle>SERVIÇOS</SubTitle>
                 </Card>
-                <Card>
+                <Card onClick={() => setStep("second")}>
                   <InsideCard>
                     <Image src={Home} />
                   </InsideCard>
                   <SubTitle>IMÓVEIS</SubTitle>
                 </Card>
-                <Card>
+                <Card onClick={() => setStep("second")}>
                   <InsideCard>
                     <Image src={Sheet} />
                   </InsideCard>
@@ -66,6 +67,7 @@ export function Product() {
         {step === "third" && <Description />}
         {step === "fourth" && <Photos />}
         {step === "fifth" && <ChoosePrice />}
+        {step === "sixth" && <PaymentType />}
       </Container>
     </ProductContext.Provider>
   );

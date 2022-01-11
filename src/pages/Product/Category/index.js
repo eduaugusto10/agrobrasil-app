@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../../components/Header";
 import ProductContext from "../ProductContext";
+import api from "../../../services/api";
 import { BallGreen, BallWhite } from "../style";
+
 import {
   Container,
   DivColumn,
@@ -12,8 +14,24 @@ import {
   GreenButton,
   WhiteButton,
 } from "./style";
+
 export function Category() {
   const { changeStep } = useContext(ProductContext);
+  const [product,setProduct] = useState()
+  useEffect(() => {
+    async function handleSubmit() {
+      try {
+        api.get("/type").then((result) => {
+          console.log(result.data);
+          setProduct(result.data)
+        });
+      } catch (error) {
+        console.log("Erro na senha");
+      }
+    }
+    handleSubmit();
+  }, []);
+
   function backStep() {
     changeStep("first");
   }
@@ -34,12 +52,9 @@ export function Category() {
               borderRadius: "3px",
             }}
           >
-            <option value="laranja">Laranja</option>
-            <option value="limao">Limão</option>
-            <option selected value="coco">
-              Coco
-            </option>
-            <option value="manga">Manga</option>
+            {product && product.map(products =>(
+            <option value={products.subproduct}>{products.subproduct}</option>
+            ))}
           </select>
         </div>
         <div style={{ display: "flex", flexDiretion: "row" }}>

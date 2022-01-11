@@ -8,11 +8,12 @@ import {
   SubTitle,
   GreenButton,
 } from "./style";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LeftLogo from "../../components/LeftLogo";
 import api from "../../services/api";
 
 export function Login() {
+  const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,13 +39,16 @@ export function Login() {
           )
           .then((result) => {
             console.log(result);
+            Redirect();
           });
       } catch (error) {
         console.log("Erro na senha");
       }
     }
   }
-
+  function Redirect() {
+    history("/home");
+  }
   return (
     <Container>
       <div>
