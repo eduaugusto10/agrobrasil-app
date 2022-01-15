@@ -19,9 +19,6 @@ export const TitleCard = styled.span`
   color: #162d18;
   font-weight: bold;
   font-family: "Sen", sans-serif;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 15px;
 `;
 export const SubTitle = styled.span`
   font-size: 18px;
@@ -31,32 +28,22 @@ export const SubTitle = styled.span`
   padding-right: 30px;
 `;
 export const Price = styled.span`
-  font-size: 25px;
+  font-size: 20px;
   color: #162d18;
   font-family: "Sen", sans-serif;
   font-weight: bold;
-  padding-left: 30px;
-  padding-right: 30px;
 `;
 
 export const MiniCard = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 15vw 25vw 10vw 10vw 10vw 10vw;
   background-color: #fff;
-  width: 245px;
-  height: 315px;
-  margin: 25px;
+  width: 1060px;
+  height: 168px;
+  margin: 2px;
   cursor: pointer;
   border-radius: 10px;
   text-align: left;
-`;
-export const MiniCardGreen = styled.div`
-  background-color: #162d18;
-  width: 245px;
-  height: 315px;
-  margin: 25px;
-  cursor: pointer;
-  border-radius: 10px;
 `;
 
 export const Image = styled.img`
@@ -66,7 +53,26 @@ export const Image = styled.img`
 `;
 
 export const ImageProduct = styled.img`
-  margin: 25px;
-  width: 185px;
-  height: 139px;
+  margin-left: 40px;
+  margin-top: 20px;
+  width: 160px;
+  height: 120px;
+`;
+
+export const Text = styled.span`
+  color: #162d1899;
+  font-size: 16px;
+`;
+export const TextGreen = styled.span`
+  color: #162d18;
+  font-size: 30px;
+`;
+export const TextGreenShort = styled.span`
+  color: #162d18;
+  font-size: 20px;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

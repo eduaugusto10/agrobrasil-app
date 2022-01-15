@@ -1,7 +1,7 @@
 import React, { useState, useContext, useMemo } from "react";
 import Header from "../../../components/Header";
 import ProductContext from "../ProductContext";
-import UploadImage from '../../../assets/uploads.svg'
+import UploadImage from "../../../assets/uploads.svg";
 import S3 from "react-aws-s3";
 import { BallGreen, BallWhite } from "../style";
 import {
@@ -39,20 +39,20 @@ export function Photos() {
       s3Url: process.env.REACT_APP_S3_URL,
     }; */
       const config = {
-        bucketName: "",
-        dirName: `media/`,
-        region: "",
-        accessKeyId: "",
-        secretAccessKey: "",
-        s3Url: "",
+        bucketName: "agrobrasil-online",
+        //dirName: "",
+        region: "us-east-2",
+        accessKeyId: "AKIAVMCUEB22AIZEQL7W",
+        secretAccessKey: "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",
       };
       const ReactS3Client = new S3(config);
 
       ReactS3Client.uploadFile(file, file.name)
         .then((data) => {
-          setFileNameS3(data.location);
+          //setFileNameS3(data.location);
+          console.log(data);
         })
-        .catch((err) => console.log(`Erro ao salvar a imagem ${err}`));
+        .catch((err) => console.log(err));
     }
   };
   const previewWhite = useMemo(() => {
@@ -98,8 +98,8 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
-                    uploadFile(e)
+                    console.log(e.target.files[0]);
+                    uploadFile(e);
                     setThumbnail(e.target.files[0]);
                   }}
                 />
@@ -127,10 +127,11 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
-                    uploadFile(e)
+                    console.log(e.target.files[0]);
+                    uploadFile(e);
                     setThumbnailII(e.target.files[0]);
-                  }}/>
+                  }}
+                />
               </Label>
             </InsideCard>
             <SubTitle>Anexo II</SubTitle>
@@ -155,10 +156,11 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
-                    uploadFile(e)
+                    console.log(e.target.files[0]);
+                    uploadFile(e);
                     setThumbnailIII(e.target.files[0]);
-                  }}/>
+                  }}
+                />
               </Label>
             </InsideCard>
             <SubTitle>Anexo III</SubTitle>
@@ -183,10 +185,11 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
-                    uploadFile(e)
+                    console.log(e.target.files[0]);
+                    uploadFile(e);
                     setThumbnailIV(e.target.files[0]);
-                  }}/>
+                  }}
+                />
               </Label>
             </InsideCard>
             <SubTitle>Anexo IV</SubTitle>
@@ -211,10 +214,11 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
-                    uploadFile(e)
+                    console.log(e.target.files[0]);
+                    uploadFile(e);
                     setThumbnailV(e.target.files[0]);
-                  }}/>
+                  }}
+                />
               </Label>
             </InsideCard>
             <SubTitle>Anexo V</SubTitle>

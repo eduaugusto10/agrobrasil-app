@@ -18,11 +18,10 @@ export const ImageRight = styled.img`
   margin: 30px;
   width: 35px;
   height: 35px;
+  cursor: pointer;
 `;
 
-export const Div = styled.div`
-
-`;
+export const Div = styled.div``;
 
 export const Search = styled.input`
   margin: 16px;

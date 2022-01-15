@@ -58,6 +58,7 @@ export const GreenButton = styled.button`
   color: #ffffff;
   border-radius: 5px;
   font-family: "Sen", sans-serif;
+  cursor:pointer;
 `;
 export const WhiteButton = styled.button`
   width: 211px;
@@ -69,6 +70,7 @@ export const WhiteButton = styled.button`
   color: #162d18;
   border-radius: 5px;
   font-family: "Sen", sans-serif;
+  cursor:pointer;
 `;
 
 export const Label = styled.label`

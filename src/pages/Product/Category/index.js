@@ -16,19 +16,20 @@ import {
 } from "./style";
 
 export function Category() {
-  const { changeStep } = useContext(ProductContext);
-  const [product,setProduct] = useState()
+  const { changeStep, father, setProductName } = useContext(ProductContext);
+  const [product, setProduct] = useState();
   useEffect(() => {
     async function handleSubmit() {
       try {
-        api.get("/type").then((result) => {
+        api.get(`/types/${father}`).then((result) => {
           console.log(result.data);
-          setProduct(result.data)
+          setProduct(result.data);
         });
       } catch (error) {
         console.log("Erro na senha");
       }
     }
+    console.log(father);
     handleSubmit();
   }, []);
 
@@ -51,10 +52,14 @@ export function Category() {
               paddingLeft: "10px",
               borderRadius: "3px",
             }}
+            onChange={(e) => setProductName(e.target.value)}
           >
-            {product && product.map(products =>(
-            <option value={products.subproduct}>{products.subproduct}</option>
-            ))}
+            {product &&
+              product.map((products) => (
+                <option value={products.subproduct}>
+                  {products.subproduct}
+                </option>
+              ))}
           </select>
         </div>
         <div style={{ display: "flex", flexDiretion: "row" }}>

@@ -10,6 +10,7 @@ import  Home  from "../pages/Home";
 import Product from "../pages/Product";
 import Description from "../pages/Description";
 import DataClient from "../pages/Product/DataClient";
+import MyProducts from '../pages/MyProducts'
 
 const PrivateRoute = () => {
   const { signed } = useContext(AuthContext);
@@ -28,6 +29,7 @@ const Router = () => (
       <Route path="/product" element={<Product/>}/>
       <Route path="/description" element={<Description/>}/>
       <Route path='/data' element={<DataClient/>}/>
+      <Route path='/myproducts' element={<MyProducts/>}/>
     </Routes>
   </BrowserRouter>
 );
