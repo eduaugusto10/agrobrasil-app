@@ -23,6 +23,21 @@ export const SubTitle = styled.span`
   color: #162d18;
   font-family: "Sen", sans-serif;
   text-align: center;
+  font-weight: bold;
+`;
+export const TextPrice = styled.span`
+  font-size: 30px;
+  color: #162d18;
+  font-family: "Sen", sans-serif;
+  text-align: center;
+  font-weight: bold;
+`;
+export const TextCents = styled.span`
+  font-size: 13px;
+  color: #162d18;
+  font-family: "Sen", sans-serif;
+  text-align: center;
+  font-weight: bold;  
 `;
 
 export const Text = styled.span`
@@ -45,6 +60,7 @@ export const InsideCard = styled.div`
   margin-bottom: 10px;
   border-radius: 20px;
   border: 6px solid #162d18;
+  
 `;
 
 export const GreenButton = styled.button`
@@ -61,7 +77,7 @@ export const WhiteButton = styled.button`
   width: 211px;
   height: 40px;
   margin-top: 30px;
-  background-color: #FFF;
+  background-color: #fff;
   font-size: 18px;
   color: #162d18;
   border-radius: 5px;

@@ -1,23 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../../../components/Header";
 import ProductContext from "../ProductContext";
+import AuthContext from "../../../context/auth";
 import api from "../../../services/api";
 import { BallGreen, BallWhite } from "../style";
 
-import {
-  Container,
-  DivColumn,
-  SubTitle,
-  Text,
-  Card,
-  InsideCard,
-  GreenButton,
-  WhiteButton,
-} from "./style";
+import { DivColumn, Text, GreenButton, WhiteButton } from "./style";
 
 export function Category() {
-  const { changeStep, father, setProductName } = useContext(ProductContext);
+  const { user } = useContext(AuthContext);
+  const { changeStep, father, setProdID } = useContext(ProductContext);
   const [product, setProduct] = useState();
+  const [productID, setProductID] = useState();
   useEffect(() => {
     async function handleSubmit() {
       try {
@@ -25,17 +19,28 @@ export function Category() {
           console.log(result.data);
           setProduct(result.data);
         });
-      } catch (error) {
-        console.log("Erro na senha");
-      }
+      } catch (error) {}
     }
     console.log(father);
     handleSubmit();
   }, []);
 
-  function backStep() {
-    changeStep("first");
+  async function createProduct() {
+    console.log(user);
+    const data = new FormData();
+    data.append("user_id", localStorage.getItem("@agrobrasilID"));
+    data.append("type_id", productID);
+    data.append("payment_status", "cadastro");
+    try {
+      api.post("/products", data).then((result) => {
+        console.log(result);
+        setProdID(result.data.id)
+      });
+    } catch (error) {
+      console.log("Erro na senha");
+    }
   }
+
   return (
     <>
       <Header />
@@ -52,19 +57,22 @@ export function Category() {
               paddingLeft: "10px",
               borderRadius: "3px",
             }}
-            onChange={(e) => setProductName(e.target.value)}
+            onChange={(e) => setProductID(e.target.value)}
           >
             {product &&
               product.map((products) => (
-                <option value={products.subproduct}>
-                  {products.subproduct}
-                </option>
+                <option value={products.id}>{products.subproduct}</option>
               ))}
           </select>
         </div>
         <div style={{ display: "flex", flexDiretion: "row" }}>
           <WhiteButton onClick={() => changeStep("first")}>VOLTAR</WhiteButton>
-          <GreenButton onClick={() => changeStep("third")}>
+          <GreenButton
+            onClick={() => {
+              changeStep("third");
+              createProduct();
+            }}
+          >
             CONTINUAR
           </GreenButton>
         </div>

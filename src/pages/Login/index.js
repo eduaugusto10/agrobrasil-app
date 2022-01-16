@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext ,useState } from "react";
 import {
   Text,
   Container,
@@ -11,8 +11,11 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import LeftLogo from "../../components/LeftLogo";
 import api from "../../services/api";
+import AuthContext from "../../context/auth";
+import { login } from '../../services/auth'
 
 export function Login() {
+  const { signIn } = useContext(AuthContext);
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +41,9 @@ export function Login() {
             }
           )
           .then((result) => {
-            console.log(result);
+            signIn(result.data);
+            login(result.data.token.token)
+            localStorage.setItem("@agrobrasilID",result.data.user[0].id)
             Redirect();
           });
       } catch (error) {

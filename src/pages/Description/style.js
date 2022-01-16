@@ -80,6 +80,7 @@ export const ProductImage = styled.img`
   height: 58px;
   margin-top: 6px;
   margin-bottom: 6px;
+  cursor: pointer;
 `;
 export const ImageMain = styled.img`
   width: 204px;

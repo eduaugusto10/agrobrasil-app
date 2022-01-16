@@ -1,11 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import ProductContext from "./ProductContext";
 import ChoosePrice from "./ChoosePrice";
 import Description from "./Description";
 import Category from "./Category";
 import Photos from "./Photos";
-import { useNavigate } from "react-router-dom";
 import PaymentType from "./PaymentType";
 import Hands from "../../assets/hands.svg";
 import Engrenagem from "../../assets/engrenagem.svg";
@@ -23,21 +22,15 @@ import {
 export function Product() {
   const [step, setStep] = useState("first");
   const [father, setFather] = useState("");
-  const [productName, setProductName] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const history = useNavigate();
+  const [prodID, setProdID] = useState("");
+
   function changeStep(stepToChange) {
     setStep(stepToChange);
-  }
-  function descriptions(titles, descriptions) {
-    setTitle(titles);
-    setDescription(descriptions);
   }
 
   return (
     <ProductContext.Provider
-      value={{ changeStep, descriptions, father, setProductName }}
+      value={{ changeStep, father, prodID, setProdID }}
     >
       <Container>
         {step === "first" && (

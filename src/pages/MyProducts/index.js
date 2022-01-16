@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/HeaderHome";
 import Menu from "../../components/Menu";
+import api from "../../services/api";
 import Anuncie from "../../assets/anuncie.svg";
 import Example from "../../assets/example.png";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +11,6 @@ import {
   TitleCard,
   MiniCard,
   ImageProduct,
-  SubTitle,
   Price,
   Text,
   TextGreen,
@@ -18,10 +18,21 @@ import {
   Column,
 } from "./style";
 export function MyProducts() {
-  const history = useNavigate();
-  function Redirect() {
-    history("/product");
-  }
+  const [products, setProducts] = useState(null);
+  useEffect(() => {
+    async function queryUsers() {
+      try {
+        await api.get(`produser/${localStorage.getItem("@agrobrasilID")}`).then((result) => {
+          console.log(result.data);
+          setProducts(result.data);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    queryUsers();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -32,212 +43,41 @@ export function MyProducts() {
           <div
             style={{
               display: "flex",
-              flexDirection:"column"
+              flexDirection: "column",
             }}
           >
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
-            <MiniCard>
-              <Column>
-                <ImageProduct src={Example} />
-              </Column>
-              <Column>
-                <Text style={{marginTop: "19px"}}>ID: 3910</Text>
-                <TitleCard>Semente de Dinheiro</TitleCard>
-                <Text style={{marginTop: "15px"}}>São Paulo - SP</Text>
-                <Price>
-                  R$25<span style={{ fontSize: "8px" }}>,00</span>
-                </Price>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Plano</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Expira em</Text>
-                <TextGreenShort>13/01</TextGreenShort>
-                <TextGreen>2022</TextGreen>
-              </Column>
-              <Column>
-                <Text style={{marginTop: "38px"}}>Restam</Text>
-                <TextGreen>38</TextGreen>
-                <TextGreenShort>dias</TextGreenShort>
-              </Column>
-              <Column></Column>
-            </MiniCard>
+            {products &&
+              products.map((prodItens) => (
+                <MiniCard>
+                  <Column>
+                    <ImageProduct src={prodItens.image_1} />
+                  </Column>
+                  <Column>
+                    <Text style={{ marginTop: "19px" }}>ID: {prodItens.id}</Text>
+                    <TitleCard>{prodItens.title}</TitleCard>
+                    <Text style={{ marginTop: "15px" }}>São Paulo - SP</Text>
+                    <Price>
+                      R${prodItens.price}<span style={{ fontSize: "8px" }}>,00</span>
+                    </Price>
+                  </Column>
+                  <Column>
+                    <Text style={{ marginTop: "38px" }}>Plano</Text>
+                    <TextGreen>38</TextGreen>
+                    <TextGreenShort>dias</TextGreenShort>
+                  </Column>
+                  <Column>
+                    <Text style={{ marginTop: "38px" }}>Expira em</Text>
+                    <TextGreenShort>13/01</TextGreenShort>
+                    <TextGreen>2022</TextGreen>
+                  </Column>
+                  <Column>
+                    <Text style={{ marginTop: "38px" }}>Restam</Text>
+                    <TextGreen>38</TextGreen>
+                    <TextGreenShort>dias</TextGreenShort>
+                  </Column>
+                  <Column></Column>
+                </MiniCard>
+              ))}
           </div>
         </div>
       </Div>

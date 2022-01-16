@@ -1,4 +1,5 @@
 import React, { useState, useContext, useMemo } from "react";
+import api from "../../../services/api";
 import Header from "../../../components/Header";
 import ProductContext from "../ProductContext";
 import UploadImage from "../../../assets/uploads.svg";
@@ -18,15 +19,20 @@ import {
 export function Photos() {
   const hasThumbail = { border: "none" };
   const [step, setStep] = useState("first");
-  const { changeStep } = useContext(ProductContext);
+  const { changeStep, prodID } = useContext(ProductContext);
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailII, setThumbnailII] = useState(null);
   const [thumbnailIII, setThumbnailIII] = useState(null);
   const [thumbnailIV, setThumbnailIV] = useState(null);
   const [thumbnailV, setThumbnailV] = useState(null);
   const [fileNameS3, setFileNameS3] = useState(null);
+  const [fileNameS3I, setFileNameS3I] = useState(null);
+  const [fileNameS3II, setFileNameS3II] = useState(null);
+  const [fileNameS3III, setFileNameS3III] = useState(null);
+  const [fileNameS3IV, setFileNameS3IV] = useState(null);
+  const [fileNameS3V, setFileNameS3V] = useState(null);
 
-  const uploadFile = async (event) => {
+  const uploadFile = async (event, number) => {
     const file = event.target.files[0];
     if (file.name !== undefined) {
       setFileNameS3(file);
@@ -40,7 +46,7 @@ export function Photos() {
     }; */
       const config = {
         bucketName: "agrobrasil-online",
-        //dirName: "",
+        dirName: "media",
         region: "us-east-2",
         accessKeyId: "AKIAVMCUEB22AIZEQL7W",
         secretAccessKey: "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",
@@ -49,8 +55,27 @@ export function Photos() {
 
       ReactS3Client.uploadFile(file, file.name)
         .then((data) => {
-          //setFileNameS3(data.location);
-          console.log(data);
+          setFileNameS3(data.location);
+          console.log(data.location);
+          switch (number) {
+            case 1:
+              setFileNameS3I(data.location);
+              break;
+            case 2:
+              setFileNameS3II(data.location);
+              break;
+            case 3:
+              setFileNameS3III(data.location);
+              break;
+            case 4:
+              setFileNameS3IV(data.location);
+              break;
+            case 5:
+              setFileNameS3V(data.location);
+              break;
+            default:
+              break;
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -70,6 +95,23 @@ export function Photos() {
   const previewV = useMemo(() => {
     return thumbnailV ? URL.createObjectURL(thumbnailV) : null;
   }, [thumbnailV]);
+
+  async function updateProduct() {
+    const data = new FormData();
+    data.append("payment_status", "pagamento");
+    data.append("image_1", fileNameS3I);
+    data.append("image_2", fileNameS3II);
+    data.append("image_3", fileNameS3III);
+    data.append("image_4", fileNameS3IV);
+    data.append("image_5", fileNameS3V);
+    try {
+      api.put(`/products/${prodID}`, data).then((result) => {
+        console.log(result);
+      });
+    } catch (error) {
+      console.log("Erro na senha");
+    }
+  }
 
   return (
     <>
@@ -98,14 +140,13 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0]);
-                    uploadFile(e);
+                    uploadFile(e, 1);
                     setThumbnail(e.target.files[0]);
                   }}
                 />
               </Label>
             </InsideCard>
-            <SubTitle>Anexo I</SubTitle>
+            <SubTitle>Capa</SubTitle>
           </Card>
           <Card>
             <InsideCard>
@@ -127,8 +168,7 @@ export function Photos() {
                 <input
                   type="file"
                   onChange={(e) => {
-                    console.log(e.target.files[0]);
-                    uploadFile(e);
+                    uploadFile(e, 2);
                     setThumbnailII(e.target.files[0]);
                   }}
                 />
@@ -157,7 +197,7 @@ export function Photos() {
                   type="file"
                   onChange={(e) => {
                     console.log(e.target.files[0]);
-                    uploadFile(e);
+                    uploadFile(e, 3);
                     setThumbnailIII(e.target.files[0]);
                   }}
                 />
@@ -186,7 +226,7 @@ export function Photos() {
                   type="file"
                   onChange={(e) => {
                     console.log(e.target.files[0]);
-                    uploadFile(e);
+                    uploadFile(e, 4);
                     setThumbnailIV(e.target.files[0]);
                   }}
                 />
@@ -215,7 +255,7 @@ export function Photos() {
                   type="file"
                   onChange={(e) => {
                     console.log(e.target.files[0]);
-                    uploadFile(e);
+                    uploadFile(e, 5);
                     setThumbnailV(e.target.files[0]);
                   }}
                 />
@@ -226,7 +266,12 @@ export function Photos() {
         </div>
         <div style={{ display: "flex", flexDiretion: "row" }}>
           <WhiteButton onClick={() => changeStep("third")}>VOLTAR</WhiteButton>
-          <GreenButton onClick={() => changeStep("fifth")}>
+          <GreenButton
+            onClick={() => {
+              updateProduct();
+              changeStep("fifth");
+            }}
+          >
             CONTINUAR
           </GreenButton>
         </div>

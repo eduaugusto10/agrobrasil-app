@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/HeaderHome";
 import Menu from "../../components/Menu";
+import api from "../../services/api";
 import Phone from "../../assets/phone.svg";
 import Perfil from "../../assets/perfilContact.svg";
 import ExampleDescription from "../../assets/example-description.png";
+import { useLocation } from "react-router-dom";
 
 import {
   Div,
@@ -19,7 +21,24 @@ import {
   TextShort,
   TextDescription,
 } from "./style";
-export function Description() {
+export function Description(props) {
+  const [products, setProducts] = useState(null);
+  const [mainImage, setMainImage] = useState(null);
+  const location = useLocation();
+  useEffect(() => {
+    async function queryUsers() {
+      try {
+        await api.get(`products/${location.state.id}`).then((result) => {
+          console.log(result.data);
+          setProducts(result.data);
+          setMainImage(result.data.image_1);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    queryUsers();
+  }, []);
   return (
     <div>
       <Header />
@@ -29,11 +48,26 @@ export function Description() {
           <Title>Descrição do Produto</Title>
           <Card>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <ProductImage src={ExampleDescription} />
-              <ProductImage src={ExampleDescription} />
-              <ProductImage src={ExampleDescription} />
-              <ProductImage src={ExampleDescription} />
-              <ProductImage src={ExampleDescription} />
+              <ProductImage
+                onClick={() => setMainImage(products.image_1)}
+                src={products == null ? "Carregando" : products.image_1}
+              />
+              <ProductImage
+                onClick={() => setMainImage(products.image_2)}
+                src={products == null ? "Carregando" : products.image_2}
+              />
+              <ProductImage
+                onClick={() => setMainImage(products.image_3)}
+                src={products == null ? "Carregando" : products.image_3}
+              />
+              <ProductImage
+                onClick={() => setMainImage(products.image_4)}
+                src={products == null ? "Carregando" : products.image_4}
+              />
+              <ProductImage
+                onClick={() => setMainImage(products.image_5)}
+                src={products == null ? "Carregando" : products.image_5}
+              />
             </div>
             <div
               style={{
@@ -44,7 +78,7 @@ export function Description() {
               }}
             >
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <ImageMain src={ExampleDescription} />
+                <ImageMain src={products == null ? "Carregando" : mainImage} />
                 <div
                   style={{
                     display: "flex",
@@ -52,11 +86,15 @@ export function Description() {
                     marginLeft: "30px",
                   }}
                 >
-                  <TextBig>Trator New Holland T7.205 4x4 2014</TextBig>
+                  <TextBig>
+                    {products == null ? "Carregando" : products.title}
+                  </TextBig>
                   <TextShort style={{ marginTop: "35px" }}>
                     São Paulo - SP
                   </TextShort>
-                  <TextBig>R$88.900</TextBig>
+                  <TextBig>
+                    R${products == null ? "Carregando" : products.price}
+                  </TextBig>
                 </div>
               </div>
               <div
@@ -69,10 +107,7 @@ export function Description() {
               >
                 <TextShort>Descrição</TextShort>
                 <TextDescription style={{ marginTop: "13px" }}>
-                  Lorem ipsum mi congue lectus bibendum ipsum turpis rhoncus,
-                  primis blandit ornare lacus ut tincidunt per integer, viverra
-                  vulputate vestibulum tellus odio blandit tincidunt. consequat
-                  primis sit iaculis tempor integer per pharetra netus ante
+                  {products == null ? "Carregando" : products.description}
                 </TextDescription>
               </div>
             </div>
@@ -91,7 +126,13 @@ export function Description() {
                 <Image src={Perfil} />
                 <TextShort>Eduardo Oliveira</TextShort>
               </div>
-              <div style={{ display: "flex", flexDirection: "row", marginTop:"7px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  marginTop: "7px",
+                }}
+              >
                 <Image src={Phone} />
                 <TextShort>(99)99999-9999</TextShort>
               </div>

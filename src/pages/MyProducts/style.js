@@ -36,7 +36,7 @@ export const Price = styled.span`
 
 export const MiniCard = styled.div`
   display: grid;
-  grid-template-columns: 15vw 25vw 10vw 10vw 10vw 10vw;
+  grid-template-columns: 15vw 20vw 10vw 10vw 10vw 10vw;
   background-color: #fff;
   width: 1060px;
   height: 168px;
