@@ -50,23 +50,23 @@ export function Description(props) {
             <div style={{ display: "flex", flexDirection: "column" }}>
               <ProductImage
                 onClick={() => setMainImage(products.image_1)}
-                src={products == null ? "Carregando" : products.image_1}
+                src={products == null ? "" : products.image_1}
               />
               <ProductImage
                 onClick={() => setMainImage(products.image_2)}
-                src={products == null ? "Carregando" : products.image_2}
+                src={products == null ? "" : products.image_2}
               />
               <ProductImage
                 onClick={() => setMainImage(products.image_3)}
-                src={products == null ? "Carregando" : products.image_3}
+                src={products == null ? "" : products.image_3}
               />
               <ProductImage
                 onClick={() => setMainImage(products.image_4)}
-                src={products == null ? "Carregando" : products.image_4}
+                src={products == null ? "" : products.image_4}
               />
               <ProductImage
                 onClick={() => setMainImage(products.image_5)}
-                src={products == null ? "Carregando" : products.image_5}
+                src={products == null ? "" : products.image_5}
               />
             </div>
             <div
@@ -78,7 +78,7 @@ export function Description(props) {
               }}
             >
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <ImageMain src={products == null ? "Carregando" : mainImage} />
+                <ImageMain src={products == null ? "" : mainImage} />
                 <div
                   style={{
                     display: "flex",
@@ -87,13 +87,13 @@ export function Description(props) {
                   }}
                 >
                   <TextBig>
-                    {products == null ? "Carregando" : products.title}
+                    {products == null ? "" : products.title}
                   </TextBig>
                   <TextShort style={{ marginTop: "35px" }}>
                     São Paulo - SP
                   </TextShort>
                   <TextBig>
-                    R${products == null ? "Carregando" : products.price}
+                    R${products == null ? "" : products.price}
                   </TextBig>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export function Description(props) {
               >
                 <TextShort>Descrição</TextShort>
                 <TextDescription style={{ marginTop: "13px" }}>
-                  {products == null ? "Carregando" : products.description}
+                  {products == null ? "" : products.description}
                 </TextDescription>
               </div>
             </div>

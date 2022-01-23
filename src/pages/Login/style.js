@@ -64,4 +64,5 @@ export const GreenButton = styled.button`
   border-radius: 5px;
   font-family: "Sen", sans-serif;
   margin-bottom: 10px;
+  cursor: pointer;
 `;

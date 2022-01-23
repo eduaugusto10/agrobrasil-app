@@ -15,7 +15,6 @@ export function Description() {
     data.append("price", price);
     data.append("title", titles);
     data.append("description", description);
-    //data.append("_method", "PUT");
     try {
       api.put(`/products/${prodID}`, data).then((result) => {
         console.log(result);

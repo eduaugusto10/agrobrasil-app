@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Image, ImageRight, Div, Search } from "./style";
 import LogoHeader from "../../assets/headerHome.png";
 import Profile from "../../assets/profile.svg";
 import Wallet from "../../assets/wallet.svg";
+import AuthContext from "../../context/auth";
 
 export function Header() {
+  const { signed } = useContext(AuthContext);
+
   const history = useNavigate();
   function Redirect() {
     history("/login");
   }
   function RedirectMyProducts() {
-    history("/myproducts");
+    !signed ? history("/login") : history("/myproducts");
   }
   return (
     <Container>

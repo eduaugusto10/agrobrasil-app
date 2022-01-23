@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{
-        signed: !!token,
+        signed: localStorage.getItem("@agrobrasilID"),
         signIn,
         token,
       }}

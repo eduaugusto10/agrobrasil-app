@@ -58,7 +58,8 @@ export function Category() {
               borderRadius: "3px",
             }}
             onChange={(e) => setProductID(e.target.value)}
-          >
+            
+          ><option selected>Selecione a categoria</option>
             {product &&
               product.map((products) => (
                 <option value={products.id}>{products.subproduct}</option>
